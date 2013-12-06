@@ -17,7 +17,7 @@ class PigLatinTranslator
 
   private
   def self.starts_with_vowel?(word)
-    word.downcase.match(/^[aeiou]/)
+    word.downcase.start_with?('a', 'e', 'i', 'o', 'u')
   end
 
   def self.rotate_consonant(word)
