@@ -1,16 +1,20 @@
 class PigLatinTranslator
   def self.translate(phrase)
-      if self.starts_with_vowel?(phrase)
-        phrase << 'way'
+    words = phrase.split(/ /)
+    translated_words = []
+    words.each do |word|
+      if self.starts_with_vowel?(word)
+        translated_word = word << 'way'
       else
-        string = phrase
+        string = word
         until self.starts_with_vowel?(string)
-          array_of_letters = string.split(//)
-          first_letter = array_of_letters.shift
-          string = array_of_letters.join << first_letter
+          string = self.rotate_consonant(string)
         end
-        string << 'ay'
+        translated_word = string + 'ay'
       end
+      translated_words << translated_word
+    end
+    translated_phrase = translated_words.join(' ')
   end
 
   private
@@ -19,12 +23,10 @@ class PigLatinTranslator
   end
 
   def self.rotate_consonant(word)
-    string = word
-    until self.starts_with_vowel?(string)
-      array_of_letters = string.split(//)
-      first_letter = array_of_letters.shift
-      string = array_of_letters.join << first_letter
-    end
-    string
+    array_of_letters = word.split(//)
+    first_letter = array_of_letters.shift
+    word = array_of_letters.join << first_letter
   end
 end
+
+# test = PigLatinTranslator.translate('string')
