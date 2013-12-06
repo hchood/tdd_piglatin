@@ -7,14 +7,12 @@ class PigLatinTranslator
         translated_word = word << 'way'
       else
         string = word
-        until self.starts_with_vowel?(string)
-          string = self.rotate_consonant(string)
-        end
+        string = self.rotate_consonant(string) until self.starts_with_vowel?(string)
         translated_word = string + 'ay'
       end
       translated_words << translated_word
     end
-    translated_phrase = translated_words.join(' ')
+    translated_words.join(' ')
   end
 
   private
@@ -28,5 +26,3 @@ class PigLatinTranslator
     word = array_of_letters.join << first_letter
   end
 end
-
-# test = PigLatinTranslator.translate('string')
