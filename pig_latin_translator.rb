@@ -7,7 +7,8 @@ class PigLatinTranslator
         translated_word = word << 'way'
       else
         string = word
-        string = self.rotate_consonant(string) until self.starts_with_vowel?(string)
+        string = self.rotate_consonant(string)
+        string = self.rotate_consonant(string) until self.starts_with_vowel?(string) || self.starts_with_y?(string)
         translated_word = string + 'ay'
       end
       translated_words << translated_word
@@ -18,6 +19,10 @@ class PigLatinTranslator
   private
   def self.starts_with_vowel?(word)
     word.downcase.start_with?('a', 'e', 'i', 'o', 'u')
+  end
+
+  def self.starts_with_y?(word)
+    word.downcase.start_with?('y')
   end
 
   def self.rotate_consonant(word)

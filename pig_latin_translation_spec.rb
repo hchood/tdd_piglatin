@@ -17,4 +17,12 @@ describe PigLatinTranslator do
   it 'returns a string containing each word of the phrase, translated' do
     expect(PigLatinTranslator.translate('animal piano string')).to eql('animalway ianopay ingstray')
   end
+
+  it 'treats y as a consonant if it is at the beginning of the word' do
+    expect(PigLatinTranslator.translate('yellow')).to eql('ellowyay')
+  end
+
+  it 'treats a mid-word y as a vowel' do
+    expect(PigLatinTranslator.translate('trying')).to eql('yingtray')
+  end
 end
