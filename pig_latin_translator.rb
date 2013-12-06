@@ -21,8 +21,9 @@ class PigLatinTranslator
   end
 
   def self.rotate_consonant(word)
-    array_of_letters = word.split(//)
-    first_letter = array_of_letters.shift
-    word = array_of_letters.join << first_letter
+    # array_of_letters = word.split(//)
+    # first_letter = array_of_letters.shift
+    # word = array_of_letters.join << first_letter
+    word[1..-1] + word[0]
   end
 end
