@@ -6,7 +6,9 @@ describe PigLatinTranslator do
     expect(PigLatinTranslator.translate('animal')).to eql('animalway')
   end
 
-  it 'translates a word starting in a consonant'
+  it 'translates a word starting in a consonant' do
+    expect(PigLatinTranslator.translate('piano')).to eql('ianopay')
+  end
 
   it 'translates a word starting in a consonant cluster'
 
